@@ -1,20 +1,18 @@
 <template>
   <div id="app">
-    <div>
-      <p>
-        If Element is successfully added to this project, you'll see an
-        <code v-text="'<el-button>'"></code>
-        below
-      </p>
-      <el-button>el-button</el-button>
+    <div class="layout">
+      <Aside></Aside>
     </div>
   </div>
 </template>
 
 <script>
+import Aside from "./views/components/Aside";
 export default {
   name: "app",
-  components: {}
+  components: {
+    Aside
+  }
 };
 </script>
 
