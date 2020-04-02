@@ -29,10 +29,43 @@ export default {
     };
   },
   methods: {
-    loginHendle() {
-      this.$http.post("login", this.formData).then(res => {
-        console.log(res);
-      });
+    async loginHendle() {
+      // this.$http.post("login", this.formData).then(res => {
+      //   console.log(res);
+
+      //   const {
+      //     data,
+      //     meta: { msg, status }
+      //   } = res.data;
+
+      //   if (status === 200) {
+      //     // 1.成功跳转页面，提示成功
+      //     this.$message.success(data.username + "，欢迎回家！");
+      //     this.$router.push({ name: "home" });
+      //   } else {
+      //     // 2.失败提示信息
+      //     this.$message.error("用户名不存在！");
+      //   }
+      // });
+      const res = await this.$http.post("login", this.formData);
+      // console.log(res);
+      const {
+        data,
+        meta: { msg, status }
+      } = res.data;
+
+      if (status === 200) {
+        // 成功
+        // 0.保存token
+        localStorage.setItem("token", data.token);
+        // 1.跳转页面
+        this.$router.push({ name: "home" });
+        // 2.提示成功
+        this.$message.success(data.username + "，欢迎回家！");
+      } else {
+        // 失败提示信息
+        this.$message.error("用户名不存在！");
+      }
     }
   }
 };
