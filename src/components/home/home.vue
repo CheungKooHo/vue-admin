@@ -3,7 +3,7 @@
     <el-header>
       <h2>Background management system</h2>
       <span>
-        <a href>退出</a>
+        <a @click.prevent="handleSignout()" href="#">退出</a>
       </span>
     </el-header>
     <el-container>
@@ -86,6 +86,13 @@ export default {
     if (!token) {
       this.$router.push({ name: "login" });
     } else {
+    }
+  },
+  methods: {
+    handleSignout() {
+      localStorage.clear();
+      this.$message.success("记得回来哦！");
+      this.$router.push({ name: "login" });
     }
   }
 };
