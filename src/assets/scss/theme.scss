@@ -1,0 +1,17 @@
+.blueTheme {
+  @import './element-blue.scss';
+
+  @import './theme-base.scss';
+}
+
+.blackTheme {
+  @import './element-black.scss';
+
+  @import './theme-base.scss';
+}
+
+.redTheme {
+  @import './element-red.scss';
+
+  @import './theme-base.scss';
+}

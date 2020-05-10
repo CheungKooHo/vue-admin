@@ -6,6 +6,7 @@ import router from "./router/index.js";
 import MyHttpServer from "@/plugin/http.js";
 
 import "@/assets/css/base.css";
+import "@/assets/scss/theme.scss";
 
 // 引入插件
 Vue.use(ElementUI);
@@ -16,5 +17,5 @@ Vue.config.productionTip = false;
 new Vue({
   el: "#app",
   router,
-  render: h => h(App)
+  render: (h) => h(App),
 });

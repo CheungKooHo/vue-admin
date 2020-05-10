@@ -1,0 +1,17 @@
+.header {
+  padding: 0;
+  background-color: $--color-primary;
+}
+
+.aside {
+  background-color: $--color-primary-light-7;
+
+  ul,
+  .el-radio-button__inner {
+    background-color: $--color-primary-light-7;
+  }
+}
+
+.main {
+  background-color: $--color-primary-light-9;
+}
