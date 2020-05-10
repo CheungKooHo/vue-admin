@@ -2,14 +2,13 @@
   <div class="home">
     <el-container class="container">
       <el-header height="65px" class="header">
-        <Header></Header>
+        <Header @handleSignout="handleSignout"></Header>
       </el-header>
       <el-container class="warp">
         <el-aside class="aside" width="auto">
           <Aside></Aside>
         </el-aside>
         <el-main class="main">
-          <el-button type="primary">hahahahahah</el-button>
           this is main
           <router-view></router-view>
         </el-main>
@@ -39,6 +38,8 @@ export default {
   },
   methods: {
     handleSignout() {
+      console.log(2);
+
       localStorage.clear();
       this.$message.success("记得回来哦！");
       this.$router.push({ name: "login" });

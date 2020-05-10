@@ -46,10 +46,13 @@
         <i class="el-icon-setting"></i>
         <span slot="title">商品管理</span>
       </el-menu-item>
-      <el-menu-item index="contacts">
-        <i class="el-icon-document"></i>
-        <span slot="title">联系人管理</span>
-      </el-menu-item>
+      <el-submenu index="contacts">
+        <template slot="title">
+          <i class="el-icon-document"></i>
+          <span slot="title">联系人管理</span>
+        </template>
+        <el-menu-item index="1-1">选项1</el-menu-item>
+      </el-submenu>
       <el-menu-item index="personal">
         <i class="el-icon-setting"></i>
         <span slot="title">个人中心</span>

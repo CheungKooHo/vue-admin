@@ -26,8 +26,16 @@
       </div>
       <div class="login_bar">
         <el-image :src="src"></el-image>
-        <span>admin</span>
-        <i class="el-icon-caret-bottom"></i>
+        <el-dropdown>
+          <span>admin</span>
+          <i class="el-icon-caret-bottom"></i>
+          <el-dropdown-menu>
+            <el-dropdown-item @click.native="linkTo">个人信息</el-dropdown-item>
+            <el-dropdown-item @click.native="handleSignout"
+              >退出登录</el-dropdown-item
+            >
+          </el-dropdown-menu>
+        </el-dropdown>
       </div>
     </div>
   </div>
@@ -50,6 +58,13 @@ export default {
   methods: {
     changeTheme() {
       document.querySelector("body").className = this.currentTheme;
+    },
+    linkTo() {
+      this.$router.push({ name: "personal" });
+    },
+    handleSignout() {
+      this.$emit("handleSignout");
+      console.log(1);
     },
   },
 };
