@@ -27,36 +27,14 @@
       :unique-opened="true"
       :collapse-transition="false"
     >
-      <el-menu-item index="index">
-        <i class="el-icon-menu"></i>
-        <span slot="title">首页</span>
-      </el-menu-item>
-      <el-submenu index="supply">
+      <el-submenu v-for="item in menuList" :key="item.id" :index="item.path">
         <template slot="title">
           <i class="el-icon-location"></i>
-          <span slot="title">供应链管理</span>
+          <span slot="title">{{item.name}}</span>
         </template>
-        <el-menu-item index="1-1">选项1</el-menu-item>
-        <el-submenu index="1-4">
-          <span slot="title">选项4</span>
-          <el-menu-item index="1-4-1">选项a</el-menu-item>
+        <el-menu-item v-for="subItem in item.children" :key="subItem.id" :index="subItem.path">{{subItem.name}}</el-menu-item>
         </el-submenu>
       </el-submenu>
-      <el-menu-item index="goods">
-        <i class="el-icon-setting"></i>
-        <span slot="title">商品管理</span>
-      </el-menu-item>
-      <el-submenu index="contacts">
-        <template slot="title">
-          <i class="el-icon-document"></i>
-          <span slot="title">联系人管理</span>
-        </template>
-        <el-menu-item index="1-1">选项1</el-menu-item>
-      </el-submenu>
-      <el-menu-item index="personal">
-        <i class="el-icon-setting"></i>
-        <span slot="title">个人中心</span>
-      </el-menu-item>
     </el-menu>
   </div>
 </template>
@@ -67,9 +45,53 @@ export default {
     return {
       isCollapse: true,
       isOpen: false,
+      // menuList侧边栏菜单数据
+      menuList: [
+        {
+          name: "菜单1",
+          id: "1",
+          path: "1",
+          children: [
+          ]
+        },
+        {
+          name: "菜单2",
+          id: "2",
+          path: "2",
+          children: [
+            { name: "菜单2-1", id: "21", path: "21" }
+          ]
+        },
+        {
+          name: "菜单3",
+          id: "3",
+          path: "3",
+          children: [
+            { name: "菜单3-1", id: "31", path: "31" },
+            { name: "菜单3-2", id: "32", path: "32" }
+          ]
+        },
+        {
+          name: "菜单4",
+          id: "4",
+          path: "4",
+          children: [
+            { name: "菜单4-1", id: "4", path: "41" }
+          ]
+        },
+        {
+          name: "菜单5",
+          id: "5",
+          path: "5",
+          children: [
+            { name: "菜单5-1", id: "51", path: "51" }
+          ]
+        }
+      ]
     };
   },
   methods: {
+    // 菜单折叠展开按钮的方法
     btnOpen() {
       console.log("open");
       this.isOpen = true;
@@ -80,13 +102,14 @@ export default {
       this.isOpen = false;
       this.isCollapse = true;
     },
+    // 某一级菜单展开折叠调用的方法
     handleOpen(key, keyPath) {
       console.log(key, keyPath);
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath);
-    },
-  },
+    }
+  }
 };
 </script>
 

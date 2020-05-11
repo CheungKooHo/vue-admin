@@ -1,13 +1,17 @@
 <template>
   <div class="home">
     <el-container class="container">
+      <!-- header头部区 -->
       <el-header height="65px" class="header">
         <Header @handleSignout="handleSignout"></Header>
       </el-header>
+      <!-- 主要区域 -->
       <el-container class="warp">
+        <!-- 侧边栏区域 -->
         <el-aside class="aside" width="auto">
           <Aside></Aside>
         </el-aside>
+        <!-- 右侧内容区 -->
         <el-main class="main">
           this is main
           <router-view></router-view>
@@ -25,26 +29,25 @@ export default {
   name: "Home",
   components: {
     Header,
-    Aside,
+    Aside
   },
 
   beforeCreate() {
+    // 页面加载前判断是否存在登录token，如果没有返回登录
     const token = localStorage.getItem("token");
-
     if (!token) {
       this.$router.push({ name: "login" });
     } else {
     }
   },
   methods: {
+    // 登录退出的方法，监听子组件传值实现
     handleSignout() {
-      console.log(2);
-
       localStorage.clear();
       this.$message.success("记得回来哦！");
       this.$router.push({ name: "login" });
-    },
-  },
+    }
+  }
 };
 </script>
 

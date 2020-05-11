@@ -1,17 +1,16 @@
 <template>
   <div class="header">
+    <!-- logo模块 -->
     <div class="logo">
       <el-image :src="src"></el-image>
     </div>
+    <!-- 标题模块 -->
     <h2 class="title">ADMIN_SYSTEM</h2>
+    <!-- info模块 -->
     <div class="user_info">
+      <!-- 主题修改控件 -->
       <!-- <theme-pick class="theme_pick"></theme-pick> -->
-      <el-select
-        class="theme_bar"
-        v-model="currentTheme"
-        placeholder="修改主题"
-        @change="changeTheme"
-      >
+      <el-select class="theme_bar" v-model="currentTheme" placeholder="修改主题" @change="changeTheme">
         <el-option
           v-for="item in options"
           :key="item.value"
@@ -19,11 +18,13 @@
           :value="item.value"
         ></el-option>
       </el-select>
+      <!-- msg控件 -->
       <div class="msg">
         <el-badge :value="2" class="item">
           <i class="el-icon-message-solid"></i>
         </el-badge>
       </div>
+      <!-- 个人中心控件 -->
       <div class="login_bar">
         <el-image :src="src"></el-image>
         <el-dropdown>
@@ -31,9 +32,7 @@
           <i class="el-icon-caret-bottom"></i>
           <el-dropdown-menu>
             <el-dropdown-item @click.native="linkTo">个人信息</el-dropdown-item>
-            <el-dropdown-item @click.native="handleSignout"
-              >退出登录</el-dropdown-item
-            >
+            <el-dropdown-item @click.native="handleSignout">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
@@ -50,9 +49,9 @@ export default {
       options: [
         { value: "blueTheme", label: "蓝色主题" },
         { value: "blackTheme", label: "黑色主题" },
-        { value: "redTheme", label: "红色主题" },
+        { value: "redTheme", label: "红色主题" }
       ],
-      currentTheme: "",
+      currentTheme: ""
     };
   },
   methods: {
@@ -65,8 +64,8 @@ export default {
     handleSignout() {
       this.$emit("handleSignout");
       console.log(1);
-    },
-  },
+    }
+  }
 };
 </script>
 

@@ -1,11 +1,7 @@
 <template>
   <div class="login-wrap">
-    <el-form
-      class="login-from"
-      label-position="top"
-      label-width="80px"
-      :model="formData"
-    >
+    <!-- login表单 -->
+    <el-form class="login-from" label-position="top" label-width="80px" :model="formData">
       <h2>用户登录</h2>
       <el-form-item label="用户名">
         <el-input v-model="formData.username"></el-input>
@@ -22,6 +18,7 @@
 export default {
   data() {
     return {
+      // login 表单要传送的数据
       formData: {
         username: "",
         password: ""
@@ -29,31 +26,9 @@ export default {
     };
   },
   methods: {
+    // 实现异步登录
     async loginHendle() {
-      // this.$http.post("login", this.formData).then(res => {
-      //   console.log(res);
-
-      //   const {
-      //     data,
-      //     meta: { msg, status }
-      //   } = res.data;
-
-      //   if (status === 200) {
-      //     // 1.成功跳转页面，提示成功
-      //     this.$message.success(data.username + "，欢迎回家！");
-      //     this.$router.push({ name: "home" });
-      //   } else {
-      //     // 2.失败提示信息
-      //     this.$message.error("用户名不存在！");
-      //   }
-      // });
-      const res = await this.$http.post("login", this.formData);
-      // console.log(res);
-      const {
-        data,
-        meta: { msg, status }
-      } = res.data;
-
+      const { data: res } = await this.$http.post("login", this.formData);
       if (status === 200) {
         // 成功
         // 0.保存token
