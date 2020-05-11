@@ -2,6 +2,7 @@
   <div class="header">
     <!-- logo模块 -->
     <div class="logo">
+      <!-- <div class="logo" @click="toggleFullScreen"> -->
       <el-image :src="src"></el-image>
     </div>
     <!-- 标题模块 -->
@@ -46,6 +47,7 @@ export default {
     return {
       src:
         "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg",
+      isFullscreen: true,
       options: [
         { value: "blueTheme", label: "蓝色主题" },
         { value: "blackTheme", label: "黑色主题" },
@@ -55,12 +57,16 @@ export default {
     };
   },
   methods: {
+    // logo点击全屏显示
+    // 修改主题方法
     changeTheme() {
       document.querySelector("body").className = this.currentTheme;
     },
+    // 个人中心跳转
     linkTo() {
       this.$router.push({ name: "personal" });
     },
+    // 登录退出
     handleSignout() {
       this.$emit("handleSignout");
       console.log(1);

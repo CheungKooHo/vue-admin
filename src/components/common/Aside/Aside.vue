@@ -29,11 +29,15 @@
     >
       <el-submenu v-for="item in menuList" :key="item.id" :index="item.path">
         <template slot="title">
-          <i class="el-icon-location"></i>
+          <i class="el-icon-s-tools"></i>
           <span slot="title">{{item.name}}</span>
         </template>
-        <el-menu-item v-for="subItem in item.children" :key="subItem.id" :index="subItem.path">{{subItem.name}}</el-menu-item>
-        </el-submenu>
+        <el-menu-item v-for="subItem in item.children" :key="subItem.id" :index="subItem.path">
+          <template slot="title">
+            <i class="el-icon-setting"></i>
+            <span slot="title">{{subItem.name}}</span>
+          </template>
+        </el-menu-item>
       </el-submenu>
     </el-menu>
   </div>
@@ -48,43 +52,82 @@ export default {
       // menuList侧边栏菜单数据
       menuList: [
         {
-          name: "菜单1",
+          name: "首页",
           id: "1",
-          path: "1",
+          path: "/index",
           children: [
+            {
+              name: "控制台",
+              id: "11",
+              path: "/console"
+            },
+            {
+              name: "主页1",
+              id: "12",
+              path: "index1"
+            },
+            {
+              name: "主页2",
+              id: "13",
+              path: "index2"
+            }
           ]
         },
         {
-          name: "菜单2",
+          name: "组件",
           id: "2",
-          path: "2",
+          path: "module",
           children: [
-            { name: "菜单2-1", id: "21", path: "21" }
+            { name: "栅格", id: "21", path: "21" },
+            { name: "按钮", id: "22", path: "22" },
+            { name: "表单", id: "23", path: "23" },
+            { name: "导航", id: "24", path: "24" },
+            { name: "选项卡", id: "25", path: "25" }
           ]
         },
         {
-          name: "菜单3",
+          name: "页面",
           id: "3",
-          path: "3",
+          path: "pages",
           children: [
-            { name: "菜单3-1", id: "31", path: "31" },
-            { name: "菜单3-2", id: "32", path: "32" }
+            { name: "个人主页", id: "31", path: "31" },
+            { name: "客户列表", id: "32", path: "32" },
+            { name: "商品列表", id: "33", path: "33" },
+            { name: "留言板", id: "34", path: "34" },
+            { name: "搜索结果", id: "35", path: "35" },
+            { name: "注册", id: "36", path: "36" },
+            { name: "登录", id: "37", path: "37" },
+            { name: "忘记密码", id: "38", path: "38" },
+            { name: "404", id: "39", path: "39" }
           ]
         },
         {
-          name: "菜单4",
+          name: "应用",
           id: "4",
-          path: "4",
+          path: "application",
           children: [
-            { name: "菜单4-1", id: "4", path: "41" }
+            { name: "文章列表", id: "41", path: "41" },
+            { name: "分类管理", id: "42", path: "42" }
           ]
         },
         {
-          name: "菜单5",
+          name: "Echarts集成",
           id: "5",
-          path: "5",
+          path: "advanced",
           children: [
-            { name: "菜单5-1", id: "51", path: "51" }
+            { name: "折线图", id: "51", path: "51" },
+            { name: "柱状图", id: "52", path: "52" },
+            { name: "地图", id: "53", path: "53" }
+          ]
+        },
+        {
+          name: "用户",
+          id: "6",
+          path: "user",
+          children: [
+            { name: "网站用户", id: "61", path: "61" },
+            { name: "后台管理员", id: "62", path: "62" },
+            { name: "角色管理", id: "63", path: "63" }
           ]
         }
       ]
