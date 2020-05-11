@@ -64,6 +64,7 @@
             <div>66,666</div>
             <div>66,666</div>
             <div>66,666</div>
+            <div>66,666</div>
           </el-card>
         </el-col>
         <el-col :span="16">
